@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -8,12 +10,13 @@ menu = [{'title': "Главная", "url_name": 'home'},
                                                         {'title':'Богдана-Хмельницкого', 'id':3}, {'title':'Кирова','id':4}]},
 {'title': "О нас", "url_name": 'about'}
 ]
-
+date = datetime.now()
 def index(request):
     context = {
-        'menu':menu
+        'menu':menu,
+        'date':date
     }
-    return render(request, 'ortopediya/base.html', context = context)
+    return render(request, 'ortopediya/index.html', context = context)
 
 def about(request):
     return HttpResponse('О нас')

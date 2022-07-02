@@ -1,104 +1,92 @@
+{% extends "ortopediya/base.html" %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link type="text/css" href="{% static 'ortopediya/css/style.css' %}" rel="stylesheet">
-    <title>{{title}}</title>
-</head>
-<body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-   <header>
-<nav class="navbar navbar-expand-lg navbar-light"  style="background-color:#ffc107;">
-  <div class="container">
-    <a  class="col-sm-1" href="">
-    <img class="logo" src="{% static 'ortopediya/images/logo.jpg'%} ">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div  class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-            {% for m in menu %}
-            {% if m.another %}
-            <li class="nav-item col-sm-5 dropdown">
-            <a class="nav-link active dropdown-toggle  fs-5 " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-{{m.title}}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
- {% for a in m.another %}
-                <li><a class="dropdown-item  " href="{url 'store' a.id}">{{a.title}}</a></li>
-{% endfor %}
-            </ul>
-{% else %}
-          <li class="nav-item col-sm-4">
-            <a class="nav-link active fs-5" aria-current="page" href="{url m.url_name }">{{m.title}}</a>
-          </li>
-{% endif %}
-          {% endfor %}
-      </ul>
-        <form class="d-flex justify-content-end">
-          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
-          <button class="btn btn-outline-success" type="submit">Поиск</button>
-        </form>
-    </div>
-  </div>
-</nav>
-</header>
-    </header>
-
-    {% block content %}
-
-    {% endblock %}
-
-
-
-
-    <div class = 'container py-3'>
-        <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-          <div class="col-12 col-md">
-            <img class="mb-2" src="	https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
-            <small class="d-block mb-3 text-muted">© 2017–2022</small>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Features</h5>
-            <ul class="list-unstyled text-small">
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-            </ul>
+{% block content %}
+<div class="div-background container">
+    <div class="row align-items-start">
+        <div class="col-1"></div>
+        <div class="col">
+            <div class="items">
+                <div class="items__container">
+                    <div class="items__body">
+                        <div class="item">
+                            <div class="item__video">
+                                <video loop muted autoplay class="video__item" >
+                                    <source src="{% static 'ortopediya/video/index_video.mp4' %}" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+        <div class="container items">
+            <div class="card  bg-light">
+                <div class="img-index">
+                    <img class="bd-placeholder-img card-img-top rounded" width="420" height="200"
+                         src="{% static 'ortopediya/images/index_image_salt_lamps.jpg' %} " >
+                </div>
+            <div class="card-body">
+              <p class="card-text h5 text-center"> Полезные свойства соляных ламп</p>
+                <p class="truncate-text">Способствуют психологической и эмоциональной разгрузке после тяжелого рабочего дня.i,futygjyjmfyuyfu
+                fyufymuiiiiiiiiiiiiiiiiiiiiiucgyhjygjuyiyuvh ujiku</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть товар</button>
+                </div>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Читать статью</button>
+              </div>
+            </div>
           </div>
         </div>
-      </footer>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative post-background">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below asontent.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="container items d-none d-lg-block">
+<!--            "col-auto d-none d-lg-block-->
+             <div class="">
+                 <div class="img-index">
+                    <img class="bd-placeholder-img card-img-top rounded" width="50" height="90"
+                         src="{% static 'ortopediya/images/index_image_feet.jpg' %} " >
+                 </div>
+             </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">Design</strong>
+          <h3 class="mb-0">Post title</h3>
+          <div class="mb-1 text-muted">Nov 11</div>
+          <p class="mb-auto">This is a wider card with supporting text below as a natural </p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+    <div class="container items">
+            <div class="">
+                <div class="img-index">
+                    <img class="bd-placeholder-img card-img-top rounded" width="420" height="200"
+                         src="{% static 'ortopediya/images/index_image_salt_lamps.jpg' %} " >
+                </div>
+            </div>
     </div>
 
-</body>
-</html>
+{% endblock %}

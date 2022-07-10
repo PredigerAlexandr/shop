@@ -57,6 +57,7 @@
 }
 .div-background{
     background:#F3EDDF;
+    overflow:auto;
 }
 
 .test_video{
@@ -232,3 +233,37 @@
 }
 
 /*-------------------------------------------------------*/
+/*------------about-----------*/
+.responsive {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+}
+.leftimg {
+    float:left; /* Выравнивание по левому краю */
+    margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+}
+.padding-side-article{
+    padding-left: 9rem !important;
+    padding-right: 9rem !important;
+}
+.about-article-text{
+    font-family:'Times New Roman';
+    font-size: 20px;
+}
+.rightimg {
+    float:right; /* Выравнивание по левому краю */
+    margin: 0 7px 7px 7px; /* Отступы вокруг картинки */
+}
+.padding-top-6-percent{
+    padding-top: 6%;
+}
+.padding-top-4-percent{
+    padding-top: 4%;
+}
+.padding-top-2-percent{
+    padding-top: 2%;
+}
+.padding-top-7-percent{
+    padding-top: 7%;
+}

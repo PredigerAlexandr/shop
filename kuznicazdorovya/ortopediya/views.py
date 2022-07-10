@@ -19,7 +19,11 @@ def index(request):
     return render(request, 'ortopediya/index.html', context = context)
 
 def about(request):
-    return HttpResponse('О нас')
+    context = {
+        'menu': menu,
+        'date': date
+    }
+    return render(request,'ortopediya/about.html', context=context)
 
 def show_store(request, id_store):
     return HttpResponse(f'Магазины {id_store}')

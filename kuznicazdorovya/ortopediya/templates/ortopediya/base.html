@@ -39,7 +39,7 @@
             </ul>
 {% else %}
           <li class="nav-item col-sm-4">
-            <a class="nav-link active fs-5" aria-current="page" href="{url m.url_name }">{{m.title}}</a>
+            <a class="nav-link active fs-5" aria-current="page" href="{%url m.url_name %}">{{m.title}}</a>
           </li>
 {% endif %}
           {% endfor %}

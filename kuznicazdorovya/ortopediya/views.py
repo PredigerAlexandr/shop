@@ -26,7 +26,17 @@ def about(request):
     return render(request,'ortopediya/about.html', context=context)
 
 def show_store(request, id_store):
-    return HttpResponse(f'Магазины {id_store}')
+    context = {
+        'menu': menu,
+        'date': date,
+        'id_store': id_store,
+    }
+    return render(request, 'ortopediya/store.html', context=context)
+
 
 def catalog(request):
-    return HttpResponse('Каталог')
+    context = {
+        'menu': menu,
+        'date': date
+    }
+    return render(request, 'ortopediya/catalog.html', context=context)

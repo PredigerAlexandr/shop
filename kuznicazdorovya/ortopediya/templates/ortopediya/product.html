@@ -1,0 +1,64 @@
+{% extends 'ortopediya/base.html'%}
+{% load static %}
+{% block content %}
+<div class="container div-background">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="images p-3">
+                        <div class="text-center p-4"> <img class="rounded responsive-product-page-img" src="{{product.image.url}}"  /> </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product p-4">
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <span class="ml-1"><a class="text-card-cat text-dark" href="{% url 'catalog' id_cat_for_catalog_url%}"><b>Назад</b></a></span> </div> <i class="fa fa-shopping-cart text-muted"></i>
+                        </div>
+                        <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">{{product.subcategory}}</span>
+                            <h2 class="text-uppercase mt-2">{{product.name}}</h2>
+                            <div class="mt-4">Точную цену узнавайте в салонах или по телефону</div>
+                        </div>
+                        <div class="text-muted">#{{product.art}}</div>
+                        <div class="text-muted mt-3"><strong><h5>В наличии</h5></strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <nav>
+          <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+            <button class="nav-link active text-dark" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description" aria-selected="false">Описание</button>
+            <button class="nav-link text-dark" id="nav-availability-tab" data-bs-toggle="tab" data-bs-target="#nav-availability" type="button" role="tab" aria-controls="nav-availability" aria-selected="true">Наличие в салонах</button>
+            <button class="nav-link text-dark" id="nav-addition-tab" data-bs-toggle="tab" data-bs-target="#nav-addition" type="button" role="tab" aria-controls="nav-addition" aria-selected="false">Дополнительное</button>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade active show" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>{{product.name}}.</strong><br>{{product.description}}</p>
+                </div>
+            </div>
+          </div>
+          <div class="tab-pane fade mb-3" id="nav-availability" role="tabpanel" aria-labelledby="nav-availability-tab">
+              <ol class="list-group list-group-numbered">
+                  {% for store in stores%}
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold"><a class="text-dark text-decoration-none" href="{% url 'store' store.id %}">{{store.name}}</a></div>
+                          {{store.address}}
+                        </div>
+                          <span class="badge bg-primary rounded-pill"><a class="link-secondary text-decoration-none text-light" href="tel:+79867358957">{{store.phone}}</a></span>
+                      </li>
+                  {% endfor %}
+              </ol>
+          </div>
+          <div class="tab-pane fade" id="nav-addition" role="tabpanel" aria-labelledby="nav-addition-tab">
+            <p><strong>Артикул. {{product.art}}<br></strong> Размерную сетку уточняйте в салонах или по телефону.</p>
+          </div>
+        </div>
+        </div>
+</div>
+{% endblock %}

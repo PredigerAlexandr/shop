@@ -3,37 +3,41 @@
 {% block content %}
 <div class="div-background container">
     <div class="row align-items-start">
-        <div class="col-1"></div>
-        <div class="col">
+        <div class="col-1 unnecessary-col"></div>
+        <div class="col video-index">
             <div class="items">
                 <div class="items__container">
                     <div class="items__body">
                         <div class="item">
                             <div class="item__video">
-                                <video loop muted autoplay class="video__item" >
+                                <a href="{% url 'product' 4%}">
+                                    <video loop muted autoplay class="video__item" >
                                     <source src="{% static 'ortopediya/video/index_video.mp4' %}" type="video/mp4">
-                                </video>
+                                    </video>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-4 article-col">
         <div class="container items">
             <div class="card  bg-light">
                 <div class="img-index">
-                    <img class="bd-placeholder-img card-img-top rounded" width="420" height="200"
+                    <img class="bd-placeholder-img card-img-top rounded article-image-index" width="420" height="200"
                          src="{% static 'ortopediya/images/index_image_salt_lamps.jpg' %} " >
                 </div>
             <div class="card-body">
               <p class="card-text h5 text-center"> Полезные свойства соляных ламп</p>
-                <p class="truncate-text-two-lines">Способствуют психологической и эмоциональной разгрузке после тяжелого рабочего дня или сложного перриода в жизни</p>
+                <p class="truncate-text-two-lines">Гималайская розовая каменная соль,
+            обрезавшаяся более 250 миллионов лет назад во время
+            Юрского периода, является одной из самых чистых солей в мире.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть товар</button>
+                  <a href="{% url 'catalog' 34 %}" type="button" class="btn btn-sm btn-outline-secondary">Смотреть товар</a>
                 </div>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Читать статью</button>
+                  <a href="{% url 'article' 'Полезные свойства соляных ламп' %}" type="button" class="btn btn-sm btn-outline-secondary">Читать статью</a>
               </div>
             </div>
           </div>
@@ -46,14 +50,16 @@
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative post-background">
         <div class="col index-card-layout-1 d-flex flex-column position-static">
 <!--          <strong class="d-inline-block mb-2 text-primary">World</strong>-->
-          <h4 class="mb-0">Биологически активные точки</h4>
+          <h4 class="mb-0 truncate-text-one-lines-index text-center">Биологически активные точки</h4>
          <div class="mb-2 text-muted">   </div>
-          <p class="card-text mb-auto truncate-text-four-lines">"Истощение дерева начинается с корня, старение человека — с его ног". Древняя китайская поговорка. Именно в ногах находится средоточие активных точек, энергетических каналов, которые влияют на все органы и системы организма.</p>
+          <p class="card-text mb-auto truncate-text-four-lines">Много столетий назад люди заметили интересный факт: те, кто много ходят босиком,
+            обычно хорошо себя чувствуют и заметно здоровее остальных. На стопах человека находится более
+            70.000 нервных окончаний, образующими рефлексогенные зоны, которые связывают участки стопы с определенными</p>
          <div class="d-flex justify-content-between align-items-center p-1">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть товар</button>
+                  <a href="{% url 'catalog' 30 %}" type="button" class="btn btn-sm btn-outline-secondary">Смотреть товар</a>
                 </div>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Читать статью</button>
+                  <a href="{% url 'article' 'Биологически активные точки' %}" type="button" class="btn btn-sm btn-outline-secondary">Читать статью</a>
           </div>
         </div>
         <div class="col-auto d-none d-lg-block">
@@ -70,14 +76,14 @@
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative post-background">
         <div class="col index-card-layout-1 d-flex flex-column position-static">
 <!--          <strong class="d-inline-block mb-2 text-success">Design</strong>-->
-          <h4 class="mb-0">Здоровый и безмятежный сон</h4>
+          <h4 class="mb-0 truncate-text-one-lines-index text-center">Здоровый и безмятежный сон</h4>
           <div class="mb-2 text-muted"></div>
           <p class="card-text mb-auto truncate-text-four-lines">"Истощение дерева начинается с корня, старение человека — с его ног". Древняя китайская поговорка. Именно в ногах находится средоточие активных точек, энергетических каналов, которые влияют на все органы и системы организма.</p>
           <div class="d-flex justify-content-between align-items-center p-1">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть товар</button>
+                  <a href="{% url 'catalog' 27 %}" type="button" class="btn btn-sm btn-outline-secondary">Смотреть товар</a>
                 </div>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Читать статью</button>
+                  <a href="" type="button" class="btn btn-sm btn-outline-secondary">Читать статью</a>
           </div>
         </div>
         <div class="col-auto d-none d-lg-block">
@@ -92,145 +98,36 @@
     </div>
   </div>
 
-    <div class="container text-center p-4">
-        <h2>Чаще всего просматривают</h2>
-    </div>
-
-    <div class="slider">
-        <div class="slider_item">
-            <div class="col p-3">
-                       <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="text-center">
-                                <img src="{% static 'ortopediya/images/often_see_product_3.webp' %}" width="80%" vspace="5" style="border-radius:10px" />
-                        </div>
-                        <div class="card-body">
-              <h6 class="card-text truncate-text-three-lines">Стельки ORTMANN SolaPro Favora</h6>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
-                </div>
-                <div class="padding-left-12">
-                     <a href="#" class="text-decoration-none">
-                         <small href="#" class="text-muted truncate-text-one-lines">стельки</small>
-                    </a>
-                </div>
-              </div>
-            </div>
-                    </div>
-              </div>
-        </div>
-        <div class="slider_item">
-            <div class="col p-3">
-
-                       <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="text-center">
-                                <img src="{% static 'ortopediya/images/often_see_product_1.webp' %}" width="80%" vspace="5" style="border-radius:10px" />
-                        </div>
-                        <div class="card-body">
-              <h6 class="card-text truncate-text-three-lines">Женские ортопедические пантолеты BERKEMANN Daria</h6>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
-                </div>
-                <div class="padding-left-12">
-                    <a href="#" class="text-decoration-none">
-                         <small href="#" class="text-muted truncate-text-one-lines">обувь</small>
-                    </a>
-                </div>
-              </div>
-            </div>
-                    </div>
-
-              </div>
-        </div>
-        <div class="slider_item">
-            <div class="col p-3">
-                       <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="text-center">
-                                <img src="{% static 'ortopediya/images/often_see_product_2.webp' %}" width="80%" vspace="5" style="border-radius:10px" />
-                        </div>
-                        <div class="card-body">
-              <h6 class="card-text truncate-text-three-lines">Компрессионные чулки, 1 класс компрессии VENOTEKS Trend 1C205, бежевые</h6>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
-                </div>
-                <div class="padding-left-12">
-                     <a href="#" class="text-decoration-none">
-                         <small href="#" class="text-muted truncate-text-one-lines">чулки и колготки</small>
-                    </a>
-                </div>
-              </div>
-            </div>
-                    </div>
-              </div>
-        </div>
-        <div class="slider_item">
-            <div class="col p-3">
-                       <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="text-center">
-                                <img src="{% static 'ortopediya/images/often_see_product_4.webp' %}" width="80%" vspace="5" style="border-radius:10px" />
-                        </div>
-                        <div class="card-body">
-              <h6 class="card-text truncate-text-three-lines">Ортез на голеностопный сустав BAUERFEIND MalleoTrain S 8 поколение</h6>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
-                </div>
-                <div class="padding-left-12">
-                     <a href="#" class="text-decoration-none">
-                         <small href="#" class="text-muted truncate-text-one-lines">бандажи</small>
-                    </a>
-                </div>
-              </div>
-            </div>
-                    </div>
-              </div>
+    <div class="slider-index">
+        <div class="container text-center p-4">
+            <h2>Чаще всего просматривают</h2>
         </div>
 
-        <div class="slider_item">
-            <div class="col p-3">
-                       <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="text-center">
-                                <img src="{% static 'ortopediya/images/often_see_product_5.webp' %}" width="80%" vspace="5" style="border-radius:10px" />
-                        </div>
-                        <div class="card-body">
-              <h6 class="card-text truncate-text-three-lines">Подушка TRELAX Respecta for man П05, серая</h6>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
-                </div>
-                <div class="padding-left-12">
-                     <a href="#" class="text-decoration-none">
-                         <small href="#" class="text-muted truncate-text-one-lines">подушки</small>
-                    </a>
-                </div>
-              </div>
-            </div>
+        <div class="slider">
+            {% for product in index_products %}
+               <div class="slider_item">
+                <div class="col p-3">
+                           <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="text-center">
+                                    <img src="{{product.id_product.image.url}}" height="170px" width="auto" vspace="5" class="card-img-top rounded-cat-img p-2" />
+                            </div>
+                            <div class="card-body">
+                  <h6 class="card-text truncate-text-three-lines">{{product.id_product.name}}</h6>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{{ product.id_product.get_absolute_url }}" type="button" class="btn btn-sm btn-outline-secondary">Купить</a>
                     </div>
-              </div>
-        </div>
-        <div class="slider_item">
-            <div class="col p-3">
-                       <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="text-center">
-                                <img src="{% static 'ortopediya/images/often_see_product_6.webp' %}" width="80%" vspace="5" style="border-radius:10px" />
-                        </div>
-                        <div class="card-body">
-              <h6 class="card-text truncate-text-three-lines">Тейп BBTAPE BB кинезиотейп</h6>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
-                </div>
-                <div class="padding-left-12">
-                    <a href="#" class="text-decoration-none">
-                         <small href="#" class="text-muted truncate-text-one-lines">для спорта</small>
-                    </a>
-                </div>
-              </div>
-            </div>
+                    <div class="padding-left-12">
+                         <a href="{% url 'catalog'  product.id_product.subcategory.id %}" class="text-decoration-none">
+                             <small class="text-muted truncate-text-one-lines">{{product.id_product.subcategory}}</small>
+                        </a>
                     </div>
-              </div>
+                  </div>
+                </div>
+                            </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
   </div>

@@ -17,5 +17,14 @@ $(document).ready(function(){
     wariableWidth:true,
     arrows:false,
     cssEase: 'linear',
+    draggable:false,
+    pauseOnHover: false,
+    swipe: false,
+    });
+});
+
+$(document).ready(function(){
+    $('.header__burger').click(function(event){
+        $('.header__burger, .menu-burger').toggleClass('active');
     });
 });

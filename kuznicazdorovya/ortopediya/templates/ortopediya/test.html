@@ -1,12 +1,75 @@
-{% extends "ortopediya/base.html" %}
+{% extends 'ortopediya/base.html'%}
 {% load static %}
 {% block content %}
- <p><img class="rounded responsive leftimg" width="420" height="200"
-             src="{% static 'ortopediya/images/about_image_1.jpg'%}">
-        'oadughiaudb;aerufpeiubperibberiuonewr;oughewipbbwriugeqipugbero;uhrigbrinvwriughiergber
-        ;ofghrwingpwriugwhriugorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrtВ 2020 году Белёвский консервный завод из города Белёва стал первым предприятием Тульской области, получившим беспроцентный заём от Фонда развития моногородов (Группа ВЭБ.РФ).
-Получить такой заём может любое предприятие из любого моногорода страны. По заявке выдадут либо беспроцентный кредит от 5 до 250 млн рублей, либо от 250 млн до 1 млрд рублей под 5% годовых.
-Для ВЭБ.РФ важно, чтобы предприятие находилось в границах моногорода и, получив деньги, создавало там рабочие места.
-Благодаря кредиту для моногородов Белёвский консервный завод создал уже 87 рабочих мест и привлёк в экономику своего монопрофильного муниципального образования более 500 млн рублей.
-Как получить заëм и грамотно им распорядиться? Объясняем на примере Белёвского консервного завода.</p>
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar cat-filter header__menu">
+      <div class="position-sticky pt-3 list-category bg-light menu-burger">
+        <ul class="nav flex-column  ps-0">
+          {% for cat in categories %}
+            <li class= "nav-item">
+              <button class="btn btn-cat rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cat{{cat.pk}}-collapse" aria-expanded="false">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                {{ cat.name }}
+              </button>
+              <div class="collapse container" id="cat{{cat.pk}}-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal ">
+                  {% for subcat in cat.subcategory_set.all %}
+                  <li><a href="{% url 'catalog' subcat.id %}" class="nav-linked active">{{subcat.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+        {% endfor %}
+        </ul>
+      </div>
+      <div class="container mt-2 mb-2 d-flex justify-content-center">
+        <div class="header__burger">
+           <span></span>
+        </div>
+      </div>
+
+    </nav>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 p-5">
+      <div class="container ">
+        <section class=" mb-4">
+          <div class="row wow fadeIn">
+            {% for product in products %}
+              <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card">
+                    <div class="view overlay">
+                    <img class="card-img-top rounded-cat-img p-2" width="auto" height="250px" src="{{product.image.url}}" alt="{{product.name}}">
+                    <a href="#">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+
+                  <div class="card-body">
+                    <div href="" class="text-card-cat text-secondary truncate-text-one-lines text-center">
+                      <h6>{{product.subcategory}}</h6>
+                    </div>
+                    <div class="text-left">
+                      <strong>
+                        <a href="{{product.get_absolute_url}}" class="text-card-cat text-dark truncate-text-three-lines">{{product.name}}</a>
+                      </strong>
+                    </div>
+                    <p class="border-top my-3"></p>
+                    <div class="row">
+                       <h6 class="col font-weight-bold text-warning text-muted truncate-text-one-lines">
+                        #{{product.art}}
+                    </h6>
+                    <h7 class="col d-flex justify-content-end text-muted ">
+                      В наличии
+                    </h7>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
 {% endblock %}

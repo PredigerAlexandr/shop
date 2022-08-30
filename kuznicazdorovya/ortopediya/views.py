@@ -5,6 +5,8 @@ from django.shortcuts import render
 
 from .models import *
 
+from django.db.models import Q
+from django.core.paginator import Paginator
 stores = Store.objects.all()
 menu = [{'title': "Главная", "url_name": 'home'},
         {'title': "Каталог", "url_name": 'catalog'},
@@ -53,19 +55,27 @@ def show_store(request, id_store):
 
 def catalog(request, id_cat=0):
     categories = Category.objects.all()
-    if id_cat == 0:
-        products = Product.objects.all()
+    search_query = request.GET.get('search', '')
+
+    if search_query:
+        products = Product.objects.filter(Q(name__contains=search_query) | Q(name__contains=search_query.title()))
     else:
-        products = Product.objects.filter(subcategory_id=id_cat)
-    for cat in categories:
-        for sub in cat.subcategory_set.all():
-            print(sub)
+        if id_cat == 0:
+            products = Product.objects.all()
+        else:
+            products = Product.objects.filter(subcategory_id=id_cat)
+
+    paginator = Paginator(products,12)
+    print(len(products))
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     request.session['id_cat'] = id_cat
     context = {
-        'products': products,
+        'products': page_obj,
         'categories': categories,
         'menu': menu,
         'date': date,
+        'query_search':search_query,
         'title': 'Каталог',
     }
     return render(request, 'ortopediya/catalog.html', context=context)
@@ -79,7 +89,7 @@ def show_product(request, id_product):
         'product': product,
         'menu': menu,
         'date': date,
-        'title': 'Продукт',
+        'title': product.name,
     }
     return render(request, 'ortopediya/product.html', context=context)
 
@@ -102,3 +112,21 @@ def show_article(request, article_name):
             'title': 'Полезные свойства соляных ламп',
         }
         return render(request, 'ortopediya/article_salt_lamps.html', context=context)
+
+    if article_name == 'Здоровый и безмятежный сон':
+        context = {
+            'stores': stores,
+            'menu': menu,
+            'date': date,
+            'title': 'Здоровый и безмятежный сон',
+        }
+        return render(request, 'ortopediya/article_quality_sleep.html', context=context)
+
+def pageNotFound(request,exception):
+    context = {
+        'stores': stores,
+        'menu': menu,
+        'date': date,
+        'title': '404 Страница не найдена',
+    }
+    return render(request, 'ortopediya/404.html')

@@ -78,12 +78,15 @@
 <!--          <strong class="d-inline-block mb-2 text-success">Design</strong>-->
           <h4 class="mb-0 truncate-text-one-lines-index text-center">Здоровый и безмятежный сон</h4>
           <div class="mb-2 text-muted"></div>
-          <p class="card-text mb-auto truncate-text-four-lines">"Истощение дерева начинается с корня, старение человека — с его ног". Древняя китайская поговорка. Именно в ногах находится средоточие активных точек, энергетических каналов, которые влияют на все органы и системы организма.</p>
+          <p class="card-text mb-auto truncate-text-four-lines">Ортопедическая подушка – это специально разработанное средство
+            для комфортного сна.
+            Она гарантирует позвоночнику естественное положение, шейный и грудной отделы вычерчивают прямую линию,
+            нет излишней нагрузки на межпозвонковые диски. Действует с целью профилактики развития остеохондроза</p>
           <div class="d-flex justify-content-between align-items-center p-1">
                 <div class="btn-group">
                   <a href="{% url 'catalog' 27 %}" type="button" class="btn btn-sm btn-outline-secondary">Смотреть товар</a>
                 </div>
-                  <a href="" type="button" class="btn btn-sm btn-outline-secondary">Читать статью</a>
+                  <a href="{% url 'article' 'Здоровый и безмятежный сон' %}" type="button" class="btn btn-sm btn-outline-secondary">Читать статью</a>
           </div>
         </div>
         <div class="col-auto d-none d-lg-block">
@@ -115,11 +118,11 @@
                   <h6 class="card-text truncate-text-three-lines">{{product.id_product.name}}</h6>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <a href="{{ product.id_product.get_absolute_url }}" type="button" class="btn btn-sm btn-outline-secondary">Купить</a>
+                      <a href="{{ product.id_product.get_absolute_url }}" type="button" class="btn btn-sm btn-outline-secondary">Смотреть</a>
                     </div>
                     <div class="padding-left-12">
                          <a href="{% url 'catalog'  product.id_product.subcategory.id %}" class="text-decoration-none">
-                             <small class="text-muted truncate-text-one-lines">{{product.id_product.subcategory}}</small>
+                             <small class="text-muted truncate-text-one-lines-index-cat">{{product.id_product.subcategory}}</small>
                         </a>
                     </div>
                   </div>

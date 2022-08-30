@@ -12,7 +12,7 @@
              {% else %}
                 src="{% static 'ortopediya/images/spare/spare_image_store.jpg' %}">
              {% endif %}
-            {{store.description}}
+            {{store.description|safe}}
     </div>
     <div class="container text-center p-4">
             <h2>Как добраться</h2>
